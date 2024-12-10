@@ -61,81 +61,10 @@ The `importOrder` controls the order of the imports in your code, you can create
 
 Here are my configs if you want to just copy and go:
 
-#### React
-
-```js
-importOrder: [
-    '',
-    '^react$',
-    '',
-    '<THIRD_PARTY_MODULES>',
-    '',
-    '^@/contexts(/.*)$',
-    '',
-    '^@/components(/.*)$',
-    '',
-    '^@/lib(/.*)$',
-    '',
-    '^@/assets(/.*)$',
-    '',
-    '^@/(.*)$',
-    '',
-    '.css$',
-    '',
-    '^[.]',
-  ],
-```
-
-#### Next.js
-
-```js
-importOrder: [
-    '',
-    '^react$',
-    '',
-    '^next(.*)$',
-    '',
-    '<THIRD_PARTY_MODULES>',
-    '',
-    '^@/contexts(/.*)$',
-    '',
-    '^@/components(/.*)$',
-    '',
-    '^@/lib(/.*)$',
-    '',
-    '^@/assets(/.*)$',
-    '',
-    '^@/(.*)$',
-    '',
-    '.css$',
-    '',
-    '^[.]',
-  ],
-```
-
-#### Vue
-
-```js
-importOrder: [
-    '',
-    '^vue(.*)$',
-    '',
-    '<THIRD_PARTY_MODULES>',
-    '',
-    '^@/views(/.*)$',
-    '',
-    '^@/components(/.*)$',
-    '',
-    '^@/lib(/.*)$',
-    '',
-    '^@/assets(/.*)$',
-    '',
-    '^@/(.*)$',
-    '',
-    '.css$',
-    '',
-    '^[.]',
-  ],
-```
+- [React](./config/prettier/react.js)
+- [Next.js](./config/prettier/next.js)
+- [Vue](./config/prettier/vue.js)
 
 ### ESLint
+
+In construction...
