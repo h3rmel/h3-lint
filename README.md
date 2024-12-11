@@ -19,7 +19,7 @@ The setup for Prettier is pretty much the same across all the frameworks.
 1. Install the packages
 
 ```bash
-pnpm install --save-dev prettier prettier-plugin-tailwindcss @ianvs/prettier-plugin-sort-imports
+pnpm add --save-dev prettier prettier-plugin-tailwindcss @ianvs/prettier-plugin-sort-imports
 ```
 
 2. Create the `.prettierrc.js` file in the root of your project
@@ -67,8 +67,37 @@ Here are my configs if you want to just copy and go:
 
 ### ESLint
 
-For the ESLint setup I use the following config for React and Next.js projects:
+The setup for ESLint is pretty much the same for React and Next.js. For Vue, I use the default ESLint configuration provided by Vite.
 
-[The Best ESLint Rules for React Projects](https://timjames.dev/blog/the-best-eslint-rules-for-react-projects-30i8)
+So, let's get started:
 
-For Vue, I use the default ESLint configuration provided by Vite.
+1. Install the packages
+
+```bash
+pnpm add -D @typescript-eslint/eslint-plugin@7 \
+  @typescript-eslint/parser@7 \
+  eslint@8 \
+  eslint-config-airbnb \
+  eslint-config-airbnb-typescript \
+  eslint-config-prettier \
+  eslint-plugin-filename-rules \
+  eslint-plugin-jsdoc \
+  eslint-plugin-jsx-a11y \
+  eslint-plugin-no-secrets \
+  eslint-plugin-prettier \
+  eslint-plugin-react \
+  eslint-plugin-react-hooks \
+  eslint-plugin-react-refresh \
+  eslint-plugin-tsdoc \
+```
+
+2. Create the `.eslintrc.js` file in the root of your project (if doesn't already exists):
+
+```bash
+touch .eslintrc.js
+```
+
+3. In the `.eslintrc.js` file, copy and paste the following config:
+
+- [ESlint Config file](./config/eslint/config.js)
+
