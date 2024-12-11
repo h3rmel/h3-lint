@@ -79,12 +79,10 @@ pnpm add -D @typescript-eslint/eslint-plugin@7 \
   eslint@8 \
   eslint-config-airbnb \
   eslint-config-airbnb-typescript \
-  eslint-config-prettier \
   eslint-plugin-filename-rules \
   eslint-plugin-jsdoc \
   eslint-plugin-jsx-a11y \
   eslint-plugin-no-secrets \
-  eslint-plugin-prettier \
   eslint-plugin-react \
   eslint-plugin-react-hooks \
   eslint-plugin-react-refresh \
@@ -101,3 +99,4 @@ touch .eslintrc.js
 
 - [ESlint Config file](./config/eslint/config.js)
 
+**Observation:** If you're using this config in a Next.js project, don't forget to add the `'next/core-web-vitals'` and `'next/typescript'` plugins to the `extends` section and comment the `react-refresh/only-export-components` rule in line 236 of the config file.

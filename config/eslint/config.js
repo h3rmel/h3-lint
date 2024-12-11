@@ -18,7 +18,6 @@ module.exports = {
     "@typescript-eslint",
     "jsx-a11y",
     "react-refresh",
-    "prettier",
     "filename-rules",
     "jsdoc",
     "eslint-plugin-tsdoc",
@@ -32,7 +31,6 @@ module.exports = {
     "plugin:@typescript-eslint/strict",
     "airbnb/hooks",
     "plugin:jsx-a11y/recommended",
-    "plugin:prettier/recommended",
     "plugin:jsdoc/recommended-typescript",
   ],
   // Ignore files in root
@@ -72,7 +70,7 @@ module.exports = {
     "max-len": [
       "warn",
       {
-        code: 80,
+        code: 120,
         tabWidth: 2,
         ignoreUrls: true,
         ignoreTemplateLiterals: true,
