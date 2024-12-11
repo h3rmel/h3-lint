@@ -67,4 +67,8 @@ Here are my configs if you want to just copy and go:
 
 ### ESLint
 
-In construction...
+For the ESLint setup I use the following config for React and Next.js projects:
+
+[The Best ESLint Rules for React Projects](https://timjames.dev/blog/the-best-eslint-rules-for-react-projects-30i8)
+
+For Vue, I use the default ESLint configuration provided by Vite.
