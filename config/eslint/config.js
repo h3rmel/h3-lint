@@ -153,36 +153,42 @@ module.exports = {
     "@typescript-eslint/switch-exhaustiveness-check": "warn",
     "@typescript-eslint/naming-convention": [
       "warn",
+      /**
+       * If you want to edit this config, check out it's documentation
+       * @see https://typescript-eslint.io/rules/naming-convention/
+       */
       {
+        // Ignore convention for 3rd party libraries
+        selector: "import",
+        format: null,
+      },
+      {
+        // Matches everything
         selector: "default",
         format: ["camelCase"],
         leadingUnderscore: "allow",
       },
       {
+        // const / let / var variables name.
         selector: "variable",
-        // Need to allow PascalCase for React components
-        format: ["PascalCase", "camelCase", "UPPER_CASE"],
-        leadingUnderscore: "allow",
+        format: ["camelCase", "PascalCase", "UPPER_CASE"],
       },
       {
+        // Any function parameters
         selector: "parameter",
-        // Need to allow PascalCase for React components
         format: ["camelCase", "PascalCase"],
         leadingUnderscore: "allow",
       },
       {
-        selector: "property",
-        format: null,
+        // Matches any named function, declarated or expressed
+        selector: "function",
+        format: ["camelCase", "PascalCase"],
         leadingUnderscore: "allow",
       },
       {
+        // Matches class, enum, interface, typeAlias and typeParameter
         selector: "typeLike",
         format: ["PascalCase"],
-      },
-      {
-        // Ignore convention for 3rd party libraries
-        selector: "import",
-        format: null,
       },
     ],
     "@typescript-eslint/no-shadow": "off",
@@ -259,14 +265,6 @@ module.exports = {
           ClassExpression: true,
           MethodDefinition: true,
         },
-        contexts: [
-          "VariableDeclaration",
-          "TSTypeAliasDeclaration",
-          "TSMethodSignature",
-          "TSInterfaceDeclaration",
-          // Encourage documenting React prop types
-          "TSPropertySignature",
-        ],
         enableFixer: true,
       },
     ],
