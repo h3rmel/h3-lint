@@ -14,10 +14,8 @@ module.exports = {
     browser: true,
   },
   plugins: [
-    "react",
     "@typescript-eslint",
     "jsx-a11y",
-    "react-refresh",
     "filename-rules",
     "jsdoc",
     "eslint-plugin-tsdoc",
@@ -25,8 +23,6 @@ module.exports = {
   ],
   extends: [
     "eslint:recommended",
-    "plugin:react/jsx-runtime",
-    "plugin:react/recommended",
     "airbnb-typescript",
     "plugin:@typescript-eslint/strict",
     "airbnb/hooks",
@@ -70,7 +66,7 @@ module.exports = {
     "max-len": [
       "warn",
       {
-        code: 120,
+        code: 90,
         tabWidth: 2,
         ignoreUrls: true,
         ignoreTemplateLiterals: true,
@@ -169,77 +165,46 @@ module.exports = {
         leadingUnderscore: "allow",
       },
       {
-        // const / let / var variables name.
-        selector: "variable",
-        format: ["camelCase", "PascalCase", "UPPER_CASE"],
+        selector: [
+          "accessor",
+          "classMethod",
+          "objectLiteralMethod",
+          "typeMethod",
+        ],
+        format: ["camelCase"],
       },
       {
-        // Any function parameters
-        selector: "parameter",
-        format: ["camelCase", "PascalCase"],
+        selector: ["class", "enum", "interface", "typeAlias"],
+        format: ["PascalCase"],
         leadingUnderscore: "allow",
       },
       {
-        // Matches any named function, declarated or expressed
+        selector: ["enumMember", "typeParameter"],
+        format: ["UPPER_CASE"],
+        leadingUnderscore: "allow",
+      },
+      {
         selector: "function",
         format: ["camelCase", "PascalCase"],
         leadingUnderscore: "allow",
       },
       {
-        // Matches class, enum, interface, typeAlias and typeParameter
-        selector: "typeLike",
-        format: ["PascalCase"],
+        selector: ["parameter"],
+        format: ["camelCase", "snake_case"],
+      },
+      {
+        selector: ["property", "parameterProperty", "typeProperty"],
+        format: ["camelCase", "snake_case"],
+      },
+      {
+        selector: "variable",
+        format: ["camelCase", "snake_case", "UPPER_CASE"],
+        leadingUnderscore: "allow",
       },
     ],
     "@typescript-eslint/no-shadow": "off",
     "@typescript-eslint/quotes": "off",
     "@typescript-eslint/comma-dangle": "off",
-    /**
-     * React rules
-     * @see https://github.com/jsx-eslint/eslint-plugin-react
-     */
-    "react/prefer-stateless-function": "error",
-    "react/button-has-type": "error",
-    "react/jsx-pascal-case": "error",
-    "react/jsx-no-script-url": "error",
-    "react/no-children-prop": "error",
-    "react/no-danger": "error",
-    "react/no-danger-with-children": "error",
-    "react/no-unstable-nested-components": ["error", { allowAsProps: true }],
-    "react/jsx-fragments": "error",
-    "react/destructuring-assignment": [
-      "error",
-      "always",
-      { destructureInSignature: "always" },
-    ],
-    "react/jsx-no-leaked-render": ["error", { validStrategies: ["ternary"] }],
-    "react/jsx-max-depth": ["error", { max: 5 }],
-    "react/function-component-definition": [
-      "warn",
-      { namedComponents: "function-declaration" },
-    ],
-    "react/jsx-key": [
-      "error",
-      {
-        checkFragmentShorthand: true,
-        checkKeyMustBeforeSpread: true,
-        warnOnDuplicates: true,
-      },
-    ],
-    "react/jsx-no-useless-fragment": "warn",
-    "react/jsx-curly-brace-presence": "warn",
-    "react/no-typos": "warn",
-    "react/display-name": "warn",
-    "react/self-closing-comp": "warn",
-    "react/jsx-sort-props": "warn",
-    "react/react-in-jsx-scope": "off",
-    "react/jsx-one-expression-per-line": "off",
-    "react/prop-types": "off",
-    /**
-     * React Refresh rules
-     * @see https://github.com/ArnaudBarre/eslint-plugin-react-refresh
-     */
-    "react-refresh/only-export-components": "warn",
     /**
      * JSDoc and TSDoc rules
      * @see https://github.com/gajus/eslint-plugin-jsdoc && https://github.com/microsoft/tsdoc
@@ -253,21 +218,8 @@ module.exports = {
     "jsdoc/check-syntax": "warn",
     "jsdoc/tag-lines": ["warn", "never", { startLines: 1 }],
     "jsdoc/require-param": ["warn", { checkDestructuredRoots: false }],
-    "jsdoc/require-jsdoc": [
-      "warn",
-      {
-        publicOnly: true,
-        require: {
-          FunctionDeclaration: true,
-          FunctionExpression: true,
-          ArrowFunctionExpression: true,
-          ClassDeclaration: true,
-          ClassExpression: true,
-          MethodDefinition: true,
-        },
-        enableFixer: true,
-      },
-    ],
+    // Disable it, as it's not always necessary
+    "jsdoc/require-jsdoc": "off",
     "jsdoc/check-tag-names": [
       "warn",
       { definedTags: ["remarks", "privateRemarks"] },
@@ -282,7 +234,15 @@ module.exports = {
      * Filename rules
      * @see https://github.com/dolsem/eslint-plugin-filename-rules
      */
-    "filename-rules/match": [2, { ".ts": "kebab-case", ".tsx": "kebab-case" }],
+    "filename-rules/match": [
+      2,
+      {
+        ".ts": "kebab-case",
+        ".tsx": "kebab-case",
+        ".js": "kebab-case",
+        ".jsx": "kebab-case",
+      },
+    ],
     /**
      * No Secrest rules
      * @see https://github.com/nickdeis/eslint-plugin-no-secrets

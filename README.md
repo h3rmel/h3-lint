@@ -74,19 +74,16 @@ So, let's get started:
 1. Install the packages
 
 ```bash
-pnpm add -D @typescript-eslint/eslint-plugin@7 \
-  @typescript-eslint/parser@7 \
-  eslint@8 \
+pnpm add -D @typescript-eslint/eslint-plugin \
+  @typescript-eslint/parser \
+  eslint \
   eslint-config-airbnb \
   eslint-config-airbnb-typescript \
   eslint-plugin-filename-rules \
   eslint-plugin-jsdoc \
   eslint-plugin-jsx-a11y \
   eslint-plugin-no-secrets \
-  eslint-plugin-react \
-  eslint-plugin-react-hooks \
-  eslint-plugin-react-refresh \
-  eslint-plugin-tsdoc \
+  eslint-plugin-tsdoc
 ```
 
 2. Create the `.eslintrc.js` file in the root of your project (if doesn't already exists):
@@ -99,4 +96,43 @@ touch .eslintrc.js
 
 - [ESlint Config file](./config/eslint/config.js)
 
-**Observation:** If you're using this config in a Next.js project, don't forget to add the `'next/core-web-vitals'` and `'next/typescript'` plugins to the `extends` section and comment the `react-refresh/only-export-components` rule in line 236 of the config file.
+**Observation:** If you're using this config in a Next.js project, don't forget to add the `'next/core-web-vitals'` and `'next/typescript'` plugins to the `extends`.
+
+### Migrating to ESLint v9
+
+To migrate this config to ESLint version 9, following this steps:
+
+1. With all the config already settled, run the following command:
+
+```bash
+npx @eslint/migrate-config .eslintrc.js
+```
+
+You're may see this message:
+
+```bash
+Migrating .eslintrc.json
+
+Wrote new config to ./eslint.config.mjs
+
+You will need to install the following packages to use the new config:
+- globals
+- @eslint/js
+- @eslint/eslintrc
+
+You can install them using the following command:
+
+npm install globals @eslint/js @eslint/eslintrc -D
+```
+
+If yes, install the dependecies as mentioned in the message:
+
+```bash
+pnpm add globals @eslint/js @eslint/eslintrc -D
+```
+
+And finally, delete the old configuration file:
+
+```bash
+rm .eslintrc.js
+```
